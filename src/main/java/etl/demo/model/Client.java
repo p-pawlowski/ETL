@@ -1,10 +1,12 @@
 package etl.demo.model;
 
+import org.springframework.data.domain.Persistable;
+
 import javax.persistence.*;
 
 @Entity
 @Table
-public class Client {
+public class Client implements Persistable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,7 +57,12 @@ public class Client {
         this.flagDel = false;
     }
 
-    ;
+    public boolean isNew() {
+        if (this.id == null) {
+            return true;
+        }
+        return false;
+    }
 
 
 }

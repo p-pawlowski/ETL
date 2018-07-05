@@ -62,7 +62,9 @@ public class MainController {
                 clients.add(new Client(clientDwh));
             }
         }
-        clientRepository.saveAll(clients);
+//        clientRepository.saveAll(clients);
+
+        clientRepository.save(clients.get(0));
     }
 
     @RequestMapping(path = "product")

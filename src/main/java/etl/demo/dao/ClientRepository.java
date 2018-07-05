@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ClientRepository extends CrudRepository<Client, Integer> {
+public interface ClientRepository extends CrudRepository<Client, Integer>,CustomizedSave<Client> {
 
     List<Client> findAll();
 }
