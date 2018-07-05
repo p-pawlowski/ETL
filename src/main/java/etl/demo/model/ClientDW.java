@@ -3,7 +3,7 @@ package etl.demo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Client_DWH")
+@Table(name="Client_DW")
 public class ClientDW {
 
     @Id

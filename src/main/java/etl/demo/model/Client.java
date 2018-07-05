@@ -8,30 +8,30 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_dwh")
-    private Integer idDwh;
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "flg_del")
-    private boolean flgDel;
+    @Column(name = "del_flag")
+    private boolean flagDel;
 
-    public Client(ClientDW clientDwh) {
-        this.idDwh = clientDwh.getId();
-        this.name = clientDwh.getName();
-        this.flgDel = false;
+    public Client(ClientDW clientDw) {
+        this.id = clientDw.getId();
+        this.name = clientDw.getName();
+        this.flagDel = false;
     }
 
     public Client() {
     }
 
-    public Integer getIdDwh() {
-        return idDwh;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdDwh(Integer idDwh) {
-        this.idDwh = idDwh;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -42,17 +42,17 @@ public class Client {
         this.name = name;
     }
 
-    public boolean isFlgDel() {
-        return flgDel;
+    public boolean isFlagDel() {
+        return flagDel;
     }
 
-    public void setFlgDel(boolean flgDel) {
-        this.flgDel = flgDel;
+    public void setFlagDel(boolean flagDel) {
+        this.flagDel = flagDel;
     }
 
     public void setAll(ClientDW clientDwh) {
         this.name = clientDwh.getName();
-        this.flgDel = false;
+        this.flagDel = false;
     }
 
     ;

@@ -33,16 +33,16 @@ public class MainController {
     public void doMain() {
         System.out.println("abc");
         Client client = new Client();
-        client.setFlgDel(false);
+        client.setFlagDel(false);
         client.setName("trzeci");
 
         Client client1 = clientRepository.save(client);
-        System.out.println(client1.getIdDwh());
+        System.out.println(client1.getId());
 
         List<Client> clients = clientRepository.findAll();
 
         for (Client p : clients) {
-            p.setFlgDel(true);
+            p.setFlagDel(true);
             clientRepository.save(p);
         }
     }
@@ -51,11 +51,11 @@ public class MainController {
     public void doClientDwh() {
 
         List<Client> clients = clientRepository.findAll();
-        clients.stream().forEach(c -> c.setFlgDel(true));
+        clients.stream().forEach(c -> c.setFlagDel(true));
         List<ClientDW> clientsDwh = clientDwhRepository.findAll();
 
         for (ClientDW clientDwh : clientsDwh) {
-            Optional<Client> opClient = clients.stream().filter(c -> c.getIdDwh().equals(clientDwh.getId())).findFirst();
+            Optional<Client> opClient = clients.stream().filter(c -> c.getId().equals(clientDwh.getId())).findFirst();
             if (opClient.isPresent()) {
                 opClient.get().setAll(clientDwh);
             } else {
