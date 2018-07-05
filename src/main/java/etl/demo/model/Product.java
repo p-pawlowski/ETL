@@ -1,17 +1,20 @@
 package etl.demo.model;
 
+import org.springframework.data.domain.Persistable;
+
 import javax.persistence.*;
 import java.math.BigInteger;
 
-@Table(name="PRODUCT")
+@Table(name = "PRODUCT")
 @Entity
-public class Product {
+public class Product implements Persistable {
 
     @Id
-    @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private BigInteger id;
 
-    @OneToOne(cascade = CascadeType.MERGE, mappedBy = "product", fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.ALL}, mappedBy = "product", fetch = FetchType.LAZY)
     private ProductOneToOneRelated productOneToOneRelated;
 
     public BigInteger getId() {
@@ -28,5 +31,12 @@ public class Product {
 
     public void setProductOneToOneRelated(ProductOneToOneRelated productOneToOneRelated) {
         this.productOneToOneRelated = productOneToOneRelated;
+    }
+
+    public boolean isNew() {
+        if (this.id == null) {
+            return true;
+        }
+        return false;
     }
 }

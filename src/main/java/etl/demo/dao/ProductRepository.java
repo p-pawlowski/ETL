@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.math.BigInteger;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, BigInteger> {
+public interface ProductRepository extends JpaRepository<Product, BigInteger>, CustomizedSave<Product> {
 }

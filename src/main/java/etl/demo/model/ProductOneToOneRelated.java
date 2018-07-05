@@ -13,7 +13,7 @@ public class ProductOneToOneRelated {
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId("id")
-    @JoinColumn(name = "ID_PRODUCT")
+    @JoinColumn(name = "ID_PRODUCT", nullable = false, updatable = false)
     Product product;
 
     public BigInteger getId() {

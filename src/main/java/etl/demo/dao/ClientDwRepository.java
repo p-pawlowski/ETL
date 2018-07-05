@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ClientDwhRepository extends CrudRepository<ClientDW, Integer> {
+public interface ClientDwRepository extends CrudRepository<ClientDW, Integer> {
 
     List<ClientDW> findAll();
 }

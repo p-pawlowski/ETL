@@ -1,6 +1,6 @@
 package etl.demo.controller;
 
-import etl.demo.dao.ClientDwhRepository;
+import etl.demo.dao.ClientDwRepository;
 import etl.demo.dao.ClientRepository;
 import etl.demo.dao.ProductRepository;
 import etl.demo.model.Client;
@@ -24,7 +24,7 @@ public class MainController {
     ClientRepository clientRepository;
 
     @Autowired
-    ClientDwhRepository clientDwhRepository;
+    ClientDwRepository clientDwhRepository;
 
     @Autowired
     ProductRepository productRepository;
@@ -88,7 +88,7 @@ public class MainController {
         products.add(product1);
         products.add(product2);
 
-        productRepository.saveAll(products);
+        productRepository.save(product1);
     }
 
     @RequestMapping(path="getProduct")
