@@ -7,6 +7,7 @@ import etl.demo.model.Client;
 import etl.demo.model.ClientDW;
 import etl.demo.model.ProductOneToOneRelated;
 import etl.demo.model.Product;
+import etl.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,9 @@ public class MainController {
 
     @Autowired
     ClientDwRepository clientDwhRepository;
+
+    @Autowired
+    ProductService productSerivice;
 
     @Autowired
     ProductRepository productRepository;
@@ -48,7 +52,7 @@ public class MainController {
         }
     }
 
-    @RequestMapping(path = "dwh")
+    @RequestMapping(path = "dw")
     public void doClientDwh() {
 
         List<Client> clients = clientRepository.findAll();
@@ -68,15 +72,14 @@ public class MainController {
         clientRepository.save(clients.get(0));
     }
 
-    @Transactional
     @RequestMapping(path = "product")
     public void product() {
         Product product1 = new Product();
         product1.setId(BigInteger.valueOf(1l));
-        product1.setContractNumber(BigInteger.ZERO);
+        product1.setContractNumber(BigInteger.valueOf(13));
 
 
-        productRepository.update(product1);
+        productSerivice.update(product1);
     }
 
     @RequestMapping(path="getProduct")

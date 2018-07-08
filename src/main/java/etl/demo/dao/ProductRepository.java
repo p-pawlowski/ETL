@@ -13,6 +13,9 @@ import java.math.BigInteger;
 public interface ProductRepository extends JpaRepository<Product, BigInteger> {
 
     @Modifying
-    @Query("update Product p1 set p1.contractNumber = :#{#p.contractNumber} where p1.id = :#{#p.id}")
-    void update(@Param("p")Product product);
+    @Query
+            ("update Product p set " +
+                    "p.contractNumber = :#{#p1.contractNumber} " +
+                    "where p.id = :#{#p1.id}")
+    void update(@Param("p1") Product product);
 }
