@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-@Transactional
 class CustomizedSaveImpl<T extends Persistable> implements CustomizedSave<T> {
 
     @PersistenceContext
@@ -26,7 +25,7 @@ class CustomizedSaveImpl<T extends Persistable> implements CustomizedSave<T> {
             em.persist(entity);
             return entity;
         } else {
-            session.update(entity);
+            session.save(entity);
             return entity;
         }
     }
