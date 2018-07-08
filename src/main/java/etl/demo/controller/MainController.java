@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.transaction.annotation.Transactional;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,30 +68,15 @@ public class MainController {
         clientRepository.save(clients.get(0));
     }
 
+    @Transactional
     @RequestMapping(path = "product")
     public void product() {
         Product product1 = new Product();
         product1.setId(BigInteger.valueOf(1l));
-        ProductOneToOneRelated productOneToOneRelated1 = new ProductOneToOneRelated();
-        productOneToOneRelated1.setId(product1.getId());
-        productOneToOneRelated1.setDescription("222");
-        productOneToOneRelated1.setProduct(product1);
+        product1.setContractNumber(BigInteger.ZERO);
 
-        product1.setProductOneToOneRelated(productOneToOneRelated1);
 
-        Product product2 = new Product();
-        product2.setId(BigInteger.valueOf(2l));
-        ProductOneToOneRelated productOneToOneRelated2 = new ProductOneToOneRelated();
-        productOneToOneRelated2.setProduct(product2);
-        productOneToOneRelated2.setId(product2.getId());
-        productOneToOneRelated2.setDescription("111");
-        product2.setProductOneToOneRelated(productOneToOneRelated2);
-
-        List<Product> products = new ArrayList<>();
-        products.add(product1);
-        products.add(product2);
-
-        productRepository.save(product1);
+        productRepository.update(product1);
     }
 
     @RequestMapping(path="getProduct")
