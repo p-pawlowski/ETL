@@ -12,6 +12,7 @@ import java.math.BigInteger;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, BigInteger> {
 
+
     @Modifying
     @Query
             ("update Product p set " +
